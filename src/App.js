@@ -1,7 +1,8 @@
-import Overview from "./components/Overview"
-import React, { Component } from "react";
 
-
+import './App.css';
+import React from 'react';
+import { Component } from 'react';
+import Overview from './components/Overview';
 
 class App extends Component{
   constructor(props){
@@ -12,6 +13,7 @@ class App extends Component{
   }
   handleClick = () =>{
     this.setState(state => ({ tasks: [...state.tasks,(document.getElementById('taskInput').value)]}))
+    console.log(this.state)
   }
 
   render(){
@@ -19,19 +21,11 @@ class App extends Component{
       <div>
         <input type='text' id='taskInput'/>
         <button onClick={this.handleClick}>Submit</button>
-        {
-          /*
-          <Overview tasks={this.state.tasks} />
-          */
-        }
-        
+        <Overview task1={this.state.tasks[0]} task2={this.state.tasks[1]} task3={this.state.tasks[2]} />
       </div>
 
     );
   }
 }
-
-
-
 
 export default App;
